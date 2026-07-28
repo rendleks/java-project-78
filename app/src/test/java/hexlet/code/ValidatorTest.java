@@ -14,11 +14,29 @@ public class ValidatorTest {
     }
 
     @Test
-    public void testEmptySchema() {
+    public void testStringSchema() {
         assertThat(validator).isInstanceOf(Validator.class);
         var schema = validator.string();
         assertThat(schema).isInstanceOf(Schema.class);
+        assertThat(schema.isValid(null)).isEqualTo(true);
         assertThat(schema.isValid("")).isEqualTo(true);
-        assertThat(schema.isValid()).isEqualTo(true);
+
+        schema.required();
+
+        assertThat(schema.isValid(null)).isEqualTo(false);
+        assertThat(schema.isValid("")).isEqualTo(false);
+        assertThat(schema.isValid("what does the fox say")).isEqualTo(true);
+        assertThat(schema.isValid("hexlet")).isEqualTo(true);
+
+        assertThat(schema.contains("wh").isValid("what does the fox say")).isEqualTo(true);
+        assertThat(schema.contains("what").isValid("what does the fox say")).isEqualTo(true);
+        assertThat(schema.contains("whatthe").isValid("what does the fox say")).isEqualTo(false);
+
+        assertThat(schema.isValid("what does the fox say")).isEqualTo(false);
+
+        var schema1 = validator.string();
+        assertThat(schema1.minLength(10).minLength(4).isValid("Hexlet")).isEqualTo(true);
+
     }
+
 }

@@ -1,43 +1,38 @@
 package hexlet.code.schemas;
 
-import java.util.Optional;
-import java.util.ArrayList;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.Predicate;
 import hexlet.code.Schema;
 
 
 public class StringSchema implements Schema {
 
-    private ArrayList<Boolean> fluent = new ArrayList<>();
-    private Optional<String> text = Optional.empty();
+    private Map<String, Predicate<String>> fluent;
+
+    public StringSchema() {
+        this.fluent = new HashMap<>();
+    }
 
     public StringSchema required() {
-        fluent.add(text.isPresent());
-        fluent.add(text.map(String::length).orElse(0) > 0);
+        fluent.put("checkNull", text -> text != null);
+        fluent.put("lengthZero", text -> text.length() > 0);
         return this;
     }
 
     public StringSchema minLength(int length) {
-        fluent.add(text.map(String::length).orElse(0) > length);
+        fluent.put("minLength", text -> text.length() > length);
         return this;
     }
 
     public StringSchema contains(String subString) {
-        fluent.add(text.map(t -> t.contains(subString)).orElse(false));
+        fluent.put("contains", text -> text.contains(subString));
         return this;
     }
 
-    public void setText(String text) {
-        this.text = Optional.ofNullable(text);
-    }
-
-    public boolean isValid() {
-        return fluent.stream()
-                .allMatch(Boolean::booleanValue);
-    }
-
     public boolean isValid(String value) {
-        setText(value);
-        return fluent.stream()
-                .allMatch(Boolean::booleanValue);
+        return fluent.entrySet().stream()
+                .allMatch(s -> s.getValue().test(value));
     }
 }
