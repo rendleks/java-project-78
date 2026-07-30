@@ -2,7 +2,7 @@ plugins {
     application
     checkstyle
     jacoco
-    id("org.sonarqube") version "7.3.0.8198"
+    id("org.sonarqube") version "7.3.1.8318"
 }
 
 group = "hexlet.code"
@@ -20,6 +20,14 @@ dependencies {
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     testImplementation("org.assertj:assertj-core:3.27.7")
 }
+
+sonar {
+  properties {
+    property("sonar.projectKey", "rendleks_java-project-78")
+    property("sonar.organization", "rendleks")
+  }
+}
+
 
 checkstyle {
     toolVersion = "10.12.0"
