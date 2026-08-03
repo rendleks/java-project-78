@@ -1,7 +1,10 @@
 package hexlet.code;
 
+import hexlet.code.schemas.NumberSchema;
+import hexlet.code.schemas.StringSchema;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+
 import static  org.assertj.core.api.Assertions.assertThat;
 
 public class ValidatorTest {
@@ -17,7 +20,7 @@ public class ValidatorTest {
     public void testStringSchema() {
         assertThat(validator).isInstanceOf(Validator.class);
         var schema = validator.string();
-        assertThat(schema).isInstanceOf(Schema.class);
+        assertThat(schema).isInstanceOf(StringSchema.class);
         assertThat(schema.isValid(null)).isEqualTo(true);
         assertThat(schema.isValid("")).isEqualTo(true);
 
@@ -36,7 +39,30 @@ public class ValidatorTest {
 
         var schema1 = validator.string();
         assertThat(schema1.minLength(10).minLength(4).isValid("Hexlet")).isEqualTo(true);
-
     }
 
+    @Test
+    public void testNumberSchema() {
+        var schema2 = validator.number();
+        assertThat(schema2).isInstanceOf(NumberSchema.class);
+
+        assertThat(schema2.isValid(5)).isEqualTo(true);
+        assertThat(schema2.isValid(null)).isEqualTo(true);
+        assertThat(schema2.positive().isValid(null)).isEqualTo(true);
+
+        schema2.required();
+
+        assertThat(schema2.isValid(null)).isEqualTo(false);
+        assertThat(schema2.isValid(10)).isEqualTo(true);
+        assertThat(schema2.isValid(-10)).isEqualTo(false);
+        assertThat(schema2.isValid(0)).isEqualTo(false);
+
+        schema2.range(5, 10);
+
+        assertThat(schema2.isValid(5)).isEqualTo(true);
+        assertThat(schema2.isValid(10)).isEqualTo(true);
+        assertThat(schema2.isValid(4)).isEqualTo(false);
+        assertThat(schema2.isValid(11)).isEqualTo(false);
+
+    }
 }
