@@ -13,7 +13,7 @@ import static  org.assertj.core.api.Assertions.assertThat;
 public class ValidatorTest {
 
     @Test
-    public void testStringSchema() {
+    public void testStringValidator() {
         var v = new Validator();
         assertThat(v).isInstanceOf(Validator.class);
         var schema = v.string();
@@ -39,7 +39,7 @@ public class ValidatorTest {
     }
 
     @Test
-    public void testNumberSchema() {
+    public void testNumberValidator() {
         var v = new Validator();
         var schema2 = v.number();
         assertThat(schema2).isInstanceOf(NumberSchema.class);
