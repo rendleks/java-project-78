@@ -10,12 +10,12 @@ public class NumberSchema extends BaseSchema<Integer> {
     }
 
     public NumberSchema required() {
-        super.setCheck("checkNull", num -> num != null);
+        super.addCheck("checkNull", num -> num != null);
         return this;
     }
 
     public NumberSchema positive() {
-        super.setCheck("positive",  (num) -> {
+        super.addCheck("positive",  (num) -> {
             if (num == null) {
                 return true;
             }
@@ -26,7 +26,7 @@ public class NumberSchema extends BaseSchema<Integer> {
     }
 
     public NumberSchema range(int start, int end) {
-        super.setCheck("range", num -> ((num >= start) && (num <= end)));
+        super.addCheck("range", num -> ((num >= start) && (num <= end)));
         return this;
     }
 

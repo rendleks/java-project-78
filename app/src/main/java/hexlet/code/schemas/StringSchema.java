@@ -10,18 +10,18 @@ public class StringSchema extends BaseSchema<String> {
     }
 
     public StringSchema required() {
-        super.setCheck("checkNull", text -> text != null);
-        super.setCheck("lengthZero", text -> text.length() > 0);
+        super.addCheck("checkNull", text -> text != null);
+        super.addCheck("lengthZero", text -> text.length() > 0);
         return this;
     }
 
     public StringSchema minLength(int length) {
-        super.setCheck("minLength", text -> text.length() > length);
+        super.addCheck("minLength", text -> text.length() > length);
         return this;
     }
 
     public BaseSchema<String> contains(String subString) {
-        super.setCheck("contains", text -> text.contains(subString));
+        super.addCheck("contains", text -> text.contains(subString));
         return this;
     }
 

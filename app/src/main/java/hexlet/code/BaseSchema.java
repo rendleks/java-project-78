@@ -11,7 +11,7 @@ public class BaseSchema<T> {
         this.fluent = new HashMap<String, Predicate<T>>();
     }
 
-    public void setCheck(String name, Predicate<T> check) {
+    public void addCheck(String name, Predicate<T> check) {
         fluent.put(name, check);
     }
 

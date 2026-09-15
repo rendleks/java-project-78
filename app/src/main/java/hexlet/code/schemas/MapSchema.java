@@ -3,20 +3,38 @@ package hexlet.code.schemas;
 import hexlet.code.BaseSchema;
 
 import java.util.Map;
+import java.util.function.Predicate;
 
-public class MapSchema  extends BaseSchema<Map> {
+public class MapSchema extends BaseSchema<Map> {
 
     public MapSchema() {
         super();
     }
 
     public MapSchema required() {
-        super.setCheck("checkNull", s -> s != null);
+        super.addCheck("checkNull", s -> s != null);
         return this;
     }
 
     public MapSchema sizeof(int size) {
-        super.setCheck("checkSize", s -> Integer.compare(s.size(), size) == 0);
+        super.addCheck("checkSize", s -> Integer.compare(s.size(), size) == 0);
         return this;
     }
+
+//    public <T> MapSchema shape(Map<String, BaseSchema<T>> schemas) {
+    public <T> MapSchema shape(Map<String, BaseSchema<T>> schemas) {
+        addCheck(
+                "shape",
+                map -> {
+                    return schemas.entrySet().stream()
+                            .allMatch(e -> {
+                                var key = e.getKey();
+                                var value = e.getValue();
+
+                                return value.isValid(key);
+                            });
+                });
+        return this;
+    }
+
 }
