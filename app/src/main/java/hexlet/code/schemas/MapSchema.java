@@ -21,7 +21,6 @@ public class MapSchema extends BaseSchema<Map> {
         return this;
     }
 
-//    public <T> MapSchema shape(Map<String, BaseSchema<T>> schemas) {
     public <T> MapSchema shape(Map<String, BaseSchema<T>> schemas) {
         addCheck(
                 "shape",
@@ -31,7 +30,15 @@ public class MapSchema extends BaseSchema<Map> {
                                 var key = e.getKey();
                                 var value = e.getValue();
 
-                                return value.isValid(key);
+                                return value.isValid(s -> {
+                                    for (Map.Entry<String, String> item: s.entrySet()) {
+                                        if (s.getKey().equals(key) {
+                                            return s.getValue();
+                                        }
+                                    }
+
+                                    return false;
+                                });
                             });
                 });
         return this;
