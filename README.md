@@ -1,5 +1,5 @@
 ### Hexlet tests and linter status:
-[![Actions Status](https://github.com/rendleks/java-project-78/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/rendleks/java-project-78/actions) [![Quality gate status](https://sonarcloud.io/api/project_badges/measure?project=rendleks_java-project-71&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=rendleks_java-project-71) [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=rendleks_java-project-71&metric=bugs)](https://sonarcloud.io/summary/new_code?id=rendleks_java-project-71) [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=rendleks_java-project-71&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=rendleks_java-project-71) [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=rendleks_java-project-71&metric=coverage)](https://sonarcloud.io/summary/new_code?id=rendleks_java-project-71) [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=rendleks_java-project-71&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=rendleks_java-project-71)
+[![Actions Status](https://github.com/rendleks/java-project-78/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/rendleks/java-project-78/actions) [![Quality gate status](https://sonarcloud.io/api/project_badges/measure?project=rendleks_java-project-78&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=rendleks_java-project-78) [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=rendleks_java-project-78&metric=bugs)](https://sonarcloud.io/summary/new_code?id=rendleks_java-project-78) [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=rendleks_java-project-78&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=rendleks_java-project-78) [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=rendleks_java-project-78&metric=coverage)](https://sonarcloud.io/summary/new_code?id=rendleks_java-project-78) [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=rendleks_java-project-78&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=rendleks_java-project-78)
 
 
 # Validator
@@ -74,16 +74,4 @@ actual.put("firstName", "Maya");
 actual.put("lastName", "Krasnova");
 
 schema.isValid(actual); // true
-```
-
-## Технологии
-
-- Java 17+
-- Gradle
-- JUnit 5 (тестирование)
-
-## Package
-
-```
-hexlet.code
 ```
