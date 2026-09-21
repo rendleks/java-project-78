@@ -17,8 +17,8 @@ public class BaseSchema<T> {
     }
 
     public boolean isValid(T item) {
-        if (required) {
-            addCheck("checkNull", value -> value != null);
+        if (required && item == null) {
+            return false;
         }
 
         return fluent.entrySet().stream()
