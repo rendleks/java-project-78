@@ -1,5 +1,5 @@
 plugins {
-    application
+    java
     checkstyle
     jacoco
     id("org.sonarqube") version "7.3.1.8318"
@@ -8,7 +8,6 @@ plugins {
 group = "hexlet.code"
 version = "1.0-SNAPSHOT"
 
-application { mainClass.set("hexlet.code.Validator") }
 
 repositories {
     mavenCentral()
