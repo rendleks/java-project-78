@@ -10,10 +10,10 @@ import java.util.Map;
 
 import static  org.assertj.core.api.Assertions.assertThat;
 
-public class ValidatorTest {
+public class SchemasTest {
 
     @Test
-    public void testStringValidator() {
+    public void testStringSchema() {
         var v = new Validator();
         assertThat(v).isInstanceOf(Validator.class);
         var schema = v.string();
@@ -39,7 +39,7 @@ public class ValidatorTest {
     }
 
     @Test
-    public void testNumberValidator() {
+    public void testNumberSchema() {
         var v = new Validator();
         var schema2 = v.number();
         assertThat(schema2).isInstanceOf(NumberSchema.class);
@@ -65,7 +65,7 @@ public class ValidatorTest {
     }
 
     @Test
-    public void testMapValidator() {
+    public void testMapSchema() {
         var v = new Validator();
         var schema = v.map();
 
