@@ -8,7 +8,7 @@ public class StringSchema extends BaseSchema<String> {
     }
 
     public StringSchema required() {
-        super.addCheck("checkNull", text -> text != null);
+        super.required = true;
         super.addCheck("lengthZero", text -> text.length() > 0);
         return this;
     }

@@ -9,7 +9,7 @@ public class MapSchema extends BaseSchema<Map> {
     }
 
     public MapSchema required() {
-        super.addCheck("checkNull", s -> s != null);
+        super.required = true;
         return this;
     }
 
