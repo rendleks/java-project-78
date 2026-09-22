@@ -17,8 +17,12 @@ public class BaseSchema<T> {
     }
 
     public boolean isValid(T item) {
+
         if (required && item == null) {
             return false;
+        }
+        if (!required && item == null) {
+            return true;
         }
 
         return fluent.entrySet().stream()
